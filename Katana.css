@@ -1,0 +1,48 @@
+/* ================= GLOBAL ================= */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+/* ================= HERO ================= */
+.hero {
+    background: url("https://images.unsplash.com/photo-1558980394-0c59b5a9d0a5") center/cover;
+    color: white;
+}
+
+/* ================= PRODUITS ================= */
+.product-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Animation au survol */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Images */
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablette */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 24px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .hero {
+        padding: 30px;
+    }
+
+    .card img {
+        height: 150px;
+    }
+}
