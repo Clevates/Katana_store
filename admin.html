@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Administration - Katana Store</title>
+</head>
+<body class="font-sans text-white min-h-screen  bg-gradient-to-t from-red-400 to-gray-700">
+
+  <nav class="bg-gray-900 px-6 py-4 shadow-md flex justify-between items-center">
+    <h1 class="text-2xl font-black">Katana Store - Admin</h1>
+    <a href="index.html" class="text-gray-400 hover:text-white transition">Retour à la boutique</a>
+  </nav>
+
+  <section id="login-section" class="flex justify-center items-center h-[80vh]">
+    <div class="bg-gray-900 p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-700">
+      <h2 class="text-3xl font-black text-center mb-6">Connexion Admin</h2>
+      <div class="flex flex-col gap-4">
+        <div>
+          <label class="block text-gray-400 mb-1">Identifiant</label>
+          <input type="text" id="admin-user" placeholder="admin" class="w-full bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-600 focus:outline-none focus:border-red-500">
+        </div>
+        <div>
+          <label class="block text-gray-400 mb-1">Mot de passe</label>
+          <input type="password" id="admin-pass" placeholder="1234" class="w-full bg-gray-800 text-white rounded-lg px-4 py-2 border border-gray-600 focus:outline-none focus:border-red-500">
+        </div>
+        <button onclick="login()" class="w-full bg-red-600 text-white font-bold py-3 rounded-lg hover:bg-red-700 transition mt-4">Se connecter</button>
+        <p id="login-error" class="text-red-500 text-sm hidden text-center">Identifiants incorrects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard-section" class="hidden max-w-6xl mx-auto py-10 px-6">
+    <div class="flex justify-between items-center mb-10">
+      <h2 class="text-4xl font-black">Gestion des articles</h2>
+      <button onclick="logout()" class="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600 transition">Déconnexion</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="bg-gray-900 p-6 rounded-2xl border border-gray-700 md:col-span-1 h-fit">
+        <h3 class="text-2xl font-bold mb-6">Ajouter un Katana</h3>
+        <form id="add-product-form" class="flex flex-col gap-4" onsubmit="addProduct(event)">
+          <input type="text" id="prod-name" placeholder="Nom de l'article" required class="bg-gray-800 rounded px-4 py-2 border border-gray-600 focus:border-red-500 outline-none">
+          <input type="number" id="prod-price" placeholder="Prix (€)" required class="bg-gray-800 rounded px-4 py-2 border border-gray-600 focus:border-red-500 outline-none">
+          <select id="prod-category" class="bg-gray-800 rounded px-4 py-2 border border-gray-600 outline-none">
+            <option value="classique">Classique</option>
+            <option value="replique">Réplique</option>
+            <option value="limite">Limitée</option>
+          </select>
+          <textarea id="prod-desc" placeholder="Description" required class="bg-gray-800 rounded px-4 py-2 border border-gray-600 focus:border-red-500 outline-none resize-none h-24"></textarea>
+          
+          <label class="text-gray-400 text-sm mt-2">Image de l'article :</label>
+          <input type="file" id="prod-img" accept="image/*" required class="bg-gray-800 p-2 rounded text-sm w-full">
+          <img id="img-preview" class="hidden w-full h-32 object-cover rounded mt-2 border border-gray-600">
+
+          <button type="submit" class="bg-red-600 font-bold py-3 rounded hover:bg-red-700 transition mt-2">Enregistrer l'article</button>
+        </form>
+      </div>
+
+      <div class="md:col-span-2">
+        <h3 class="text-2xl font-bold mb-6">Articles en base de données</h3>
+        <div id="admin-product-list" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lien vers le fichier JavaScript -->
+  <script src="admin.js"></script>
+</body>
+</html>
