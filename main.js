@@ -2,9 +2,9 @@ const defaultProducts = [
     { id: 1, name: "Katana du Dragon", price: 399, desc: "Lame en acier forgé, finition artisanale.", category: "classique", img: "image/katananagoya.jpg" },
     { id: 2, name: "Katana de l'Ombre", price: 349, desc: "Fourreau noir mat, tsuba minimaliste.", category: "classique", img: "image/KatanaJin.webp" },
     { id: 3, name: "Katana Impérial", price: 499, desc: "Lame pliée, détails dorés authentiques.", category: "classique", img: "image/katanasenkei.jpg" },
-    { id: 4, name: "Katana Hakina", price: 299, desc: "Lame décorative parfaite pour le cosplay.", category: "replique", img: "image/katanakoi.webp" },
-    { id: 5, name: "Katana Ishin", price: 349, desc: "Idéal pour les expositions et passionnés.", category: "replique", img: "image/katana8.jpg" },
-    { id: 6, name: "Katana Hoshin", price: 499, desc: "Édition spéciale, forgé par un maître artisan.", category: "limite", img: "image/katana7.webp" }
+    { id: 4, name: "Katana Hakina", price: 599, desc: "Lame décorative parfaite pour le cosplay.", category: "replique", img: "image/katanakoi.webp" },
+    { id: 5, name: "Katana Ishin", price: 250, desc: "Idéal pour les expositions et passionnés.", category: "replique", img: "image/katana8.jpg" },
+    { id: 6, name: "Katana Hoshin", price: 689, desc: "Édition spéciale, forgé par un maître artisan.", category: "limite", img: "image/katana7.webp" }
 ];
 
 function getProducts() {
@@ -20,6 +20,7 @@ function renderProducts() {
     const products = getProducts();
 
     products.forEach(product => {
+        let bgColor = product.category === 'limite' ? 'transition duration-300 hover:border-2 border-red-500' : '';
         let badgeColor = product.category === 'limite' ? 'bg-red-200 text-red-800' : (product.category === 'replique' ? 'bg-blue-200 text-blue-800' : 'bg-gray-200 text-black');
         
         grid.innerHTML += `
